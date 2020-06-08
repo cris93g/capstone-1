@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector, useCallback } from 'react-redux';
-import { fetchItem } from '../../redux/ducks/itemReducer';
+import { fetchItem,addToCart } from '../../redux/ducks/itemReducer';
+
 import { Card, Icon, Image, CardContent } from 'semantic-ui-react';
 import './Main.scss';
 import Nav from '../../Components/Nav/Nav'
@@ -10,7 +11,7 @@ const Main = () => {
 	const items = useSelector((state) => state.itemsReducer.items);
 	const dispatch = useDispatch();
 	useEffect(() => dispatch(fetchItem()), []);
-	
+	console.log(items)
 	return (
 		<div>
 		<Nav />
@@ -32,6 +33,7 @@ const Main = () => {
 								<Card.Content extra>
 								<Link to={`/item/${item.item_id}`}><a>{item.item_price}</a></Link>	
 								</Card.Content>
+								<Link to="/cart"><Card.Content extra><button onClick={()=>dispatch(addToCart(item))}>cart</button></Card.Content></Link>
 							</Card>
 						);
 					})
