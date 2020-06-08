@@ -4,7 +4,6 @@ const GET_USER = 'GET_USER';
 const LOG_OUT = 'LOG_OUT';
 
 const setUser = (payload)=>(
-	console.log(payload),
 	{type:GET_USER,payload}
 )
 export const getUser= ()=>{

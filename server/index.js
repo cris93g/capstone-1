@@ -29,13 +29,7 @@ app.use(
 		  }
 	})
 );
-app.use(
-	session({
-		secret: SESSION_SECRET,
-		resave: false,
-		saveUninitialized: false
-	})
-);
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(strat);

@@ -5,14 +5,18 @@ const ADD_ITEM = 'ADD_ITEM';
 const GET_CART = 'GET_CART';
 const ADD_TO_CART = 'ADD_TO_CART';
 
+const setAddItem = payload =>(
+  {type:ADD_ITEM,payload}
+) 
 
-// export function getCart() {
-//   return {
-//     type: GET_CART,
-//     payload: axios.get('/api/cart')
-//   };
-// }
-
+export const addItem = (
+  item_name, item_desc, item_price, item_category, item_pic, user_id )=>{
+  return dispatch => {
+    axios.post(`/api/new-item`, {
+      item_name, item_desc, item_price, item_category, item_pic, user_id 
+    }).then(response=> dispatch(setAddItem(response.data)))
+  }
+}
 
 
 const setAddToCart= payload=>(
@@ -42,20 +46,6 @@ dispatch(setItems(response.data))).catch(error=>console.log)
   }
 }
 
-
-
-const setAddedItems = (payload)=>({
-  type:ADD_ITEM,payload
-})
-
-// export const addItem = ()=>{
-//   return dispatch =>{
-//     axios.post(`/api/new-item`,{
-
-//     })
-//   }
-// }
-
   const initialState = {
     items: [],
     cart: []
@@ -82,6 +72,11 @@ export default function itemReducer(state = initialState, action) {
       return {
         ...state,
         cart: action.payload
+      };
+    case `${ADD_ITEM}`:
+      return {
+        ...state,
+        items: action.payload
       };
     default:
       return state;
