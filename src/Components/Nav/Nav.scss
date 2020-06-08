@@ -1,0 +1,30 @@
+.navWrapper {
+	width: 100vw;
+	height: 10vh;
+	background-color: black;
+	display: flex;
+	color:white;
+	
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		
+		align-content: stretch;
+	
+	.title{
+		margin-left: 10%;
+		height:100%;
+		width: 20%;
+		display: flex;
+		align-items: center;
+	}
+	.rightNavs{
+		width:30%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		
+	}
+}

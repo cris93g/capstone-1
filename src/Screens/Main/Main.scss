@@ -1,0 +1,16 @@
+.outerWrapper {
+	width: 100vw;
+	height: 60vh;
+	margin: auto;
+	.cardWrapper {
+		display: flex;
+		width: 60%;
+		margin: auto;
+		margin-top: 1%;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		// align-items: stretch;
+		// align-content: stretch;
+	}
+}
