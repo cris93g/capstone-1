@@ -1,35 +1,41 @@
 .navWrapper {
 	width: 100vw;
 	height: 10vh;
-	background-color: black;
+	background-color: #5e5e63;
 	display: flex;
-	color:white;
-	
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		
-		align-content: stretch;
-	
-	.title{
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+
+	align-content: stretch;
+
+	.title {
 		margin-left: 10%;
-		height:100%;
+		height: 100%;
 		width: 20%;
 		display: flex;
 		align-items: center;
+		background-image: url('https://firebasestorage.googleapis.com/v0/b/eccomerce-7b26b.appspot.com/o/images%2F3d399566-3ab0-4f6f-bcc9-ed2e4a68d714.png?alt=media&token=46a485ac-f8d9-46a0-a8be-a9d5736e32e1'); /* The image used */
+		//background-color: #cccccc; /* Used if the image is unavailable */
+		//height: 500px; /* You must set a specified height */
+		background-position: center; /* Center the image */
+		background-repeat: no-repeat; /* Do not repeat the image */
+		background-size: cover; /* Resize the background image to cover the entire container */
 	}
-	.rightNavs{
-		width:30%;
+	.rightNavs {
+		width: 60%;
 		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
-		
 	}
-	
-.menu {
-	margin-top: 180px;
-	display: flex;
-}
+
+	.menu {
+		margin-top: 180px;
+		display: flex;
+		height: 200px;
+		color: black;
+	}
 }

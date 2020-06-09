@@ -1,25 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector, useCallback } from 'react-redux';
-import { fetchItem, addToCart } from '../../redux/ducks/itemReducer';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Card, Icon, Image, CardContent } from 'semantic-ui-react';
-import './Main.scss';
-import Nav from '../../Components/Nav/Nav';
 import { Link } from 'react-router-dom';
+import '../../Screens/Main/Main.scss';
+const Featured = () => {
+	const [ items, setItems ] = useState([]);
+	useEffect(() => {
+		axios.get(`/api/items`).then((results) => {
+			setItems(results.data);
+		});
+	}, []);
 
-const Main = () => {
-	const items = useSelector((state) => state.itemsReducer.items);
-	const dispatch = useDispatch();
-	useEffect(() => dispatch(fetchItem()), []);
-	console.log(items);
+	let shuffled = items.sort(function(a, b) {
+		return 0.5 - Math.random();
+	});
+
 	return (
-		<div>
-			<Nav />
-			<div />
-			<div className="outerWrapper">
-				<div className="cardWrapper">
-					{items ? (
-						items.map((item) => {
+		<div className="featuredWrapper">
+			<div className="cardWrapper">
+				<div
+					className="featuredItems"
+					style={{ display: 'flex', marginTop: '-12%', justifyContent: 'space-around' }}
+				>
+					{shuffled ? (
+						shuffled.slice(-4).map((item) => {
 							return (
 								<Card>
 									<Image src={item.item_pic} wrapped ui={false} />
@@ -33,10 +37,6 @@ const Main = () => {
 									</Card.Content>
 									<Card.Content extra style={{ display: 'flex', justifyContent: 'space-around' }}>
 										<a>{item.item_price}</a>
-
-										<Link to="/cart">
-											<div onClick={() => dispatch(addToCart(item))}>Add to cart</div>
-										</Link>
 									</Card.Content>
 								</Card>
 							);
@@ -50,4 +50,4 @@ const Main = () => {
 	);
 };
 
-export default Main;
+export default Featured;

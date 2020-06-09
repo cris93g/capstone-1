@@ -1,38 +1,35 @@
-import React from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+// import React,{useState} from 'react';
+// import { Button, Checkbox, Form, Input, Radio, Select, TextArea } from 'semantic-ui-react';
 
-const SidebarComp = () => (
-  <Sidebar.Pushable as={Segment}>
-    <Sidebar
-      as={Menu}
-      animation='overlay'
-      icon='labeled'
-      inverted
-      vertical
-      visible
-      width='thin'
-    >
-      <Menu.Item as='a'>
-        <Icon name='home' />
-        Home
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='gamepad' />
-        Games
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='camera' />
-        Channels
-      </Menu.Item>
-    </Sidebar>
-
-    <Sidebar.Pusher>
-      <Segment basic>
-        <Header as='h3'>Application Content</Header>
-        <Image src='/images/wireframe/paragraph.png' />
-      </Segment>
-    </Sidebar.Pusher>
-  </Sidebar.Pushable>
-)
-
-export default SidebarComp
+// const SidebarComp = () => {
+//   const []=useState()
+// 	<div>
+// 		<Form>
+// 			<Form.Group inline>
+// 				<label>Quantity</label>
+// 				<Form.Field
+// 					control={Radio}
+// 					label="One"
+// 					value="1"
+// 					checked={value === '1'}
+// 					onChange={this.handleChange}
+// 				/>
+// 				<Form.Field
+// 					control={Radio}
+// 					label="Two"
+// 					value="2"
+// 					checked={value === '2'}
+// 					onChange={this.handleChange}
+// 				/>
+// 				<Form.Field
+// 					control={Radio}
+// 					label="Three"
+// 					value="3"
+// 					checked={value === '3'}
+// 					onChange={this.handleChange}
+// 				/>
+// 			</Form.Group>
+// 		</Form>
+// 	</div>;
+// };
+// export default SidebarComp;
