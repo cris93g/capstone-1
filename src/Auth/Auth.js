@@ -11,7 +11,7 @@ const Auth = () => {
 	return (
 		<div>
 			{user.user_pic ? (
-				<div style={{ display: 'flex' }}>
+				<div >
 					<img style={{ width: '50px', height: '50px', borderRadius: '25px' }} src={user.user_pic} />
 
 					<a href={REACT_APP_LOGOUT}>Logout</a>

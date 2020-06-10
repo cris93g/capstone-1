@@ -3,6 +3,9 @@ import { useParams, Route } from 'react-router-dom';
 import axios from 'axios';
 import Nav from '../../Components/Nav/Nav';
 import './Item.scss';
+import { useDispatch} from 'react-redux';
+import {addToCart } from '../../redux/ducks/itemReducer';
+import {Link} from 'react-router-dom'
 import Featured from '../../Components/Featured/Featured';
 const Item = () => {
 	const [ items, setItems ] = useState([]);
@@ -16,7 +19,7 @@ const Item = () => {
 				setItems(results.data);
 			});
 	}, []);
-
+	const dispatch = useDispatch();
 	console.log(items);
 	return (
 		<div>
@@ -34,8 +37,9 @@ const Item = () => {
 										<div className="infoWrapper">
 											<p>{item.item_name}</p>
 											<p>{item.item_desc}</p>
+							<p>{`sku# ${item.item_sku}`}</p>
 											<p>{item.item_price}</p>
-											<div className="cartB">ADD TO CART</div>
+											<Link to='/cart'>	<div className="cartB" onClick={() => dispatch(addToCart(item))}>ADD TO CART</div></Link>
 										</div>
 									</div>
 								</div>

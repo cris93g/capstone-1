@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector, useCallback } from 'react-redux';
-import { getCart, removeFromCart } from '../../redux/ducks/itemReducer';
+import { getCart, removeFromCart,clearCart } from '../../redux/ducks/itemReducer';
 import { Card, Icon, Image, CardContent } from 'semantic-ui-react';
 import '../Main/Main.scss';
 import Nav from '../../Components/Nav/Nav';
@@ -16,15 +16,12 @@ const Cart = () => {
 		for (let i = 0; i < array.length; i++) {
 			parse.push(array[i].item_price);
 		}
-
 		for (let i = 0; i < parse.length; i++) {
 			num.push(parseInt(parse[i].split('$')[1]));
 		}
-
 		sum = num.reduce((acc, val) => {
 			return acc + val;
 		}, 0);
-		console.log(sum);
 		return sum;
 	};
 	add(item);
@@ -50,7 +47,7 @@ const Cart = () => {
 											<Link to={`/item/${it.item_id}`}>
 												<a>{it.item_price}</a>
 											</Link>
-											<a onClick={() => dispatch(it.item_id)}>remove</a>
+											<a onClick={() => dispatch(removeFromCart(it.item_id))}>remove</a>
 										</Card.Content>
 									</Card>
 								</div>
@@ -61,6 +58,7 @@ const Cart = () => {
 					)}
 				</div>
 			</div>
+			{/* <button onClick={()=>dispatch(clearCart())}>clear cart</button> */}
 		</div>
 	);
 };

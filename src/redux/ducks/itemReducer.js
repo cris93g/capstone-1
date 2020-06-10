@@ -7,9 +7,10 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const USER_ITEMS = 'USER_ITEMS';
 const DELETE_ITEM = 'DELETE_ITEM';
+const CLEAR_CART= 'CLEAR_CART';
 const setAddItem = (payload) => ({ type: ADD_ITEM, payload });
 
-export const addItem = (item_name, item_desc, item_price, item_category, item_pic, user_id) => {
+export const addItem = (item_name, item_desc, item_price, item_category, item_pic, user_id,item_quantity) => {
 	return (dispatch) => {
 		axios
 			.post(`/api/new-item`, {
@@ -18,7 +19,8 @@ export const addItem = (item_name, item_desc, item_price, item_category, item_pi
 				item_price,
 				item_category,
 				item_pic,
-				user_id
+        user_id,
+        item_quantity
 			})
 			.then((response) => dispatch(setAddItem(response.data)));
 	};
@@ -27,7 +29,7 @@ export const addItem = (item_name, item_desc, item_price, item_category, item_pi
 const setRemoveFromCart = (payload) => ({ type: REMOVE_FROM_CART, payload });
 export const removeFromCart = (id) => {
 	return (dispatch) => {
-		axios.delete(`/api/cart`, id).then((response) => dispatch(setRemoveFromCart(response.data)));
+		axios.post(`/api/recart`, {id}).then((response) => dispatch(setRemoveFromCart(response.data)));
 	};
 };
 
@@ -44,6 +46,13 @@ export const getCart = () => {
 		axios.get(`/api/cart`).then((response) => dispatch(setCart(response.data)));
 	};
 };
+
+const setClearCart = (payload)=>({type:CLEAR_CART,payload});
+export const clearCart = ()=>{
+	return(dispatch)=>{
+		axios.get(`/api/clearcart`).then((response)=>dispatch(setClearCart(response.data)))
+	}
+}
 
 const setItems = (payload) => ({ type: SET_ITEMS, payload });
 export const fetchItem = () => {

@@ -1,8 +1,14 @@
 let addNewItem = async (req, res) => {
 	const db = await req.app.get('db');
-	const { item_name, item_desc, item_price, item_category, item_pic, user_id } = req.body;
-
-	let results = await db.add_item(item_name, item_desc, item_price, item_category, item_pic, user_id);
+	const { item_name, item_desc, item_price, item_category, item_pic, user_id,item_quantity } = req.body;
+	  let generateSku = (str) => {
+      return str
+        .split('')
+        .map((letter) => letter.charCodeAt(0))
+        .reduce((a, b) => a + b);
+	};
+	let newSku = await  generateSku(item_name);
+	let results = await db.add_item(item_name, item_desc, item_price, item_category, item_pic, user_id,item_quantity,newSku);
 	results ? res.status(200).send(results) : res.json({ sucess: false, message: 'failed to add item' });
 };
 
@@ -49,8 +55,29 @@ let getCart = (req, res) => {
 	res.status(200).send(req.session.cart);
 };
 let removeFromCart = async (req, res) => {
-	console.log(req.session);
+	let {id}= req.body;
+	let {cart}=req.session
+	let i=0;
+	while(i<cart.length){
+		if(cart[i].item_id===id){
+			cart.splice(i,1)
+		}
+		i++
+	}
+	res.status(200).send(req.session.cart);
 };
+let clearCart= async(req,res)=>{
+	req.session.cart=[]
+	res.status(200).send(req.session.cart);
+}
+let updateQuantity = async (req,res)=>{
+	let {item_quantity,item_id} =req.body;
+	let db=await req.app.get('db')
+	let results = await db.updateQuantity([item_quantity,item_id]);
+	results
+    ? res.status(200).send(results)
+    : res.json({ sucess: false, message: 'failed to load item' });
+} 
 module.exports = {
 	addNewItem,
 	getAllItems,
@@ -60,5 +87,7 @@ module.exports = {
 	getItem,
 	addToCart,
 	getCart,
-	removeFromCart
+	removeFromCart,
+	updateQuantity,
+	clearCart
 };

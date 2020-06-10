@@ -1,0 +1,1 @@
+UPDATE tek_items SET quantity = $1 WHERE item_id = $2

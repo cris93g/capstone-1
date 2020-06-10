@@ -7,7 +7,9 @@ const {
 	getItem,
 	getCart,
 	addToCart,
-	removeFromCart
+	removeFromCart,
+	updateQuantity,
+	clearCart
 } = require('../Controller/storeController');
 
 module.exports = (app) => {
@@ -19,5 +21,7 @@ module.exports = (app) => {
 	app.post(`/api/item`, getItem);
 	app.get('/api/cart', getCart);
 	app.post('/api/cart', addToCart);
-	app.get('/api/recart', removeFromCart);
+	app.post('/api/cart', addToCart);
+	app.post('/api/recart', removeFromCart);
+	app.get('/api/clearcart', clearCart);
 };

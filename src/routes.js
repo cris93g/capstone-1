@@ -10,11 +10,11 @@ import MyItems from './Screens/MyItems/MyItems';
 export default (
 	<Switch>
 		<Route component={Landing} exact path="/" />
-		<Route component={Main} exact path="/main" />
+		<Route component={Main}  path="/main" />
 		<Route component={Item} path="/item/:id" />
 		<Route component={SearchResults} path="/search/:id" />
-		<Route component={Cart} exact path="/cart" />
-		<Route component={NewItem} exact path="/sell" />
-		<Route component={MyItems} exact path="/myitems/:id" />
+		<Route component={Cart}  path="/cart" />
+		<Route component={NewItem}  path="/sell" />
+		<Route component={MyItems} path="/myitems/:id" />
 	</Switch>
 );

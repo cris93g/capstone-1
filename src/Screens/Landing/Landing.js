@@ -77,18 +77,18 @@ export default class Landing extends Component {
 							<h1 className="header-text">BROWSE</h1>
                         <Link to='/main'>
 							<Button
-								style={{
-									display: 'flex',
-									flexDirection: 'column',
-									justifyContent: 'space-around',
-									alignItems: 'center',
-									backgroundColor: '#031424',
-									border: 'solid #031424 2px',
-									color: 'white',
-									width: '100%',
-									height: '100%',
-									fontSize: '1.2em'
-								}}
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										justifyContent: "space-around",
+										alignItems: "center",
+										backgroundColor: "white",
+										border: "solid #031424 2px",
+										color: "#031424",
+										width: "150px",
+										height: "85%",
+										fontSize: "1.2em"
+									}}
 							>
 								BROWSE
 							</Button></Link>
