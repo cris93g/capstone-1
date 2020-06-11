@@ -11,7 +11,7 @@ const Nav = () => {
 	const dispatch = useDispatch();
 	return (
     <div className='outerContainer'>
-     <Link to='/main'> <h1
+     <Link to='/'> <h1
         className='mainTitle'
         style={{ letterSpacing: '1em', display: 'flex', margin: 'auto' }}
       >
