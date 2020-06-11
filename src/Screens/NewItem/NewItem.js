@@ -127,7 +127,7 @@ const NewItem = () => {
 						</Form>
 					</div>
 				) : (
-					<h2 style={{ display: 'flex', margin: 'auto' }}>please log in to add an item to sell</h2>
+					<h2 style={{ display: 'flex', marginLeft: '10%' }}>please log in to add an item to sell</h2>
 				)}
 			</div>
 		</div>

@@ -18,7 +18,7 @@ const Category = () => {
 			.then((results) => {
 				setItems(results.data);
 			});
-	}, []);
+	});
 	return (
 		<div>
 			{' '}

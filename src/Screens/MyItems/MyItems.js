@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteItem, getUserItems } from '../../redux/ducks/itemReducer';
 import { Card, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import '../Main/Main.scss';
 import './MyItems.scss';
 const MyItems = () => {
@@ -11,7 +10,7 @@ const MyItems = () => {
 	const items = useSelector((state) => state.itemsReducer.items);
 	const user = useSelector((state) => state.userReducer.user);
 	const dispatch = useDispatch();
-	useEffect(() => dispatch(getUserItems(id)), []);
+	useEffect(() => dispatch(getUserItems(id)));
 	return (
 		<div>
 			<div className="yourItemsBanner" />
@@ -31,9 +30,8 @@ const MyItems = () => {
 											<Card.Description>{item.item_desc}</Card.Description>
 										</Card.Content>
 										<Card.Content extra style={{ display: 'flex', justifyContent: 'space-around' }}>
-											<Link to={`/item/${item.item_id}`}>
-												<a>{item.item_price}</a>
-											</Link>
+											<a>{item.item_price}</a>
+
 											<div
 												style={{ marginTop: '50px', cursor: 'pointer' }}
 												onClick={() => dispatch(deleteItem(item.item_id))}

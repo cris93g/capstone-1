@@ -5,7 +5,7 @@ const Brands = () => {
 	let electronics = 'electronics',
 		furniture = 'furniture',
 		clothes = 'clothes',
-		toys = 'clothes';
+		toys = 'toys';
 	return (
 		<div className="brandsOuter">
 			<div className="innerBrands">

@@ -35,8 +35,9 @@ const Cart = () => {
 						item.map((it) => {
 							return (
 								<div className="cartWrapper">
-									<img style={{ maxWidth: '100px' }} src={it.item_pic} />
+									<img style={{ maxWidth: '100px', marginTop: '10px' }} src={it.item_pic} />
 									<p style={{ marginLeft: '10%' }}>{it.item_price}</p>
+
 									<a className="cartDeleteB" onClick={() => dispatch(removeFromCart(it.item_id))}>
 										remove
 									</a>
