@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Route } from 'react-router-dom';
-import Nav from '../../Components/Nav/Nav';
-import { useDispatch, useSelector, useCallback } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteItem, getUserItems } from '../../redux/ducks/itemReducer';
-import axios from 'axios';
-import { Card, Icon, Image, CardContent } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import '../Main/Main.scss';
+import './MyItems.scss';
 const MyItems = () => {
 	let { id } = useParams();
 	const items = useSelector((state) => state.itemsReducer.items);
 	const user = useSelector((state) => state.userReducer.user);
 	const dispatch = useDispatch();
 	useEffect(() => dispatch(getUserItems(id)), []);
-	console.log(user);
-
 	return (
 		<div>
-			<Nav />
+			<div className="yourItemsBanner" />
 			<div className="outerWrapper">
 				{user.user_id ? (
 					<div className="cardWrapper">
@@ -48,11 +45,13 @@ const MyItems = () => {
 								);
 							})
 						) : (
-							''
+							<h2 style={{ display: 'flex', marginLeft: '45%' }}>
+								You currently dont have any items added
+							</h2>
 						)}
 					</div>
 				) : (
-					<h2>please log in to view your items</h2>
+					<h2 style={{ display: 'flex', marginLeft: '40%' }}>please log in to view your items</h2>
 				)}
 			</div>
 		</div>

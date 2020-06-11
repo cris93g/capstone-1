@@ -36,10 +36,8 @@ const initialState = {
 
 
 export default function userReducer(state = initialState, action) {
-console.log(initialState,action)
 	switch (action.type) {
 		case `${GET_USER}`:
-			console.log(state)
 			return {
 			
 				...state,

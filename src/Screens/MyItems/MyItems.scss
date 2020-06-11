@@ -1,14 +1,6 @@
-.inpWrapper {
-	width: 40vw;
-	height: 50vh;
+.yourItemsBanner {
 	margin: auto;
-	display: flex;
-	margin-top: 2%;
-	margin-left: 40%;
-}
-.newItemsBanner {
-	margin: auto;
-	background-image: url("../../assets/addnewitem.jpg"); /* The image used */
+	background-image: url("../../assets/your items.png"); /* The image used */
 	background-color: #cccccc; /* Used if the image is unavailable */
 	height: 215px;
 	width: 1330px; /* You must set a specified height */

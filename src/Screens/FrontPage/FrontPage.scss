@@ -1,0 +1,95 @@
+.homeImage {
+	margin: auto;
+
+	background-image: linear-gradient(to bottom right, rgba(63, 61, 61, 0.514), rgba(110, 119, 121, 0.5)),
+		url("../../assets/photo-1441986300917-64674bd600d8.jfif"); /* The image used */
+	background-color: #cccccc; /* Used if the image is unavailable */
+	height: 50vh;
+	width: 65%; /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.headerText {
+	position: absolute;
+	margin-left: 43%;
+	top: 250px;
+	font-family: Roboto, sans-serif;
+	color: white;
+	font-size: 5em;
+	text-shadow: 1px 1px 2px #000000;
+}
+.headerSubText {
+	position: absolute;
+	margin-left: 35%;
+	top: 350px;
+	font-family: Roboto, sans-serif;
+	color: white;
+	font-size: 3em;
+	text-shadow: 1px 1px 2px #000000;
+}
+.buyText {
+	position: absolute;
+	margin-left: -30%;
+	top: 750px;
+	font-family: Roboto, sans-serif;
+	color: white;
+	font-size: 3em;
+	text-shadow: 1px 1px 2px #000000;
+}
+.sellText {
+	position: absolute;
+	margin-left: -30%;
+	top: 750px;
+	font-family: Roboto, sans-serif;
+	color: white;
+	font-size: 3em;
+	text-shadow: 1px 1px 2px #000000;
+}
+.divider {
+	margin-top: 100px;
+	width: 64.5vw;
+	margin: auto;
+	height: 40vh;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.leftSide {
+	margin-top: 10px;
+	width: 49%;
+	height: 90%;
+
+	background-image: linear-gradient(to bottom right, rgba(63, 61, 61, 0.514), rgba(110, 119, 121, 0.5)),
+		url("../../assets/photo-1483985988355-763728e1935b.jfif"); /* The image used */
+	background-color: #fdfdfd; /* Used if the image is unavailable */ /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover;
+}
+
+.rightSide {
+	margin-top: 10px;
+	width: 49%;
+	height: 90%;
+
+	background-image: linear-gradient(to bottom right, rgba(63, 61, 61, 0.514), rgba(110, 119, 121, 0.5)),
+		url("../../assets/sell.jfif"); /* The image used */
+	background-color: #fdfdfd; /* Used if the image is unavailable */ /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover;
+}
+.featuredText {
+	margin: auto;
+	text-align: center;
+	font-family: Roboto, sans-serif;
+}
+.frontPageFeatured {
+	width: 64.5vw;
+	margin: auto;
+	height: 30vh;
+	margin-top: 10%;
+}

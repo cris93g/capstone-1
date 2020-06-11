@@ -55,7 +55,6 @@ const SearchResults = () => {
 
 	return (
 		<div>
-			<Nav />
 			<div className="outerWrapper">
 				<div className="cardWrapper">{display}</div>
 			</div>

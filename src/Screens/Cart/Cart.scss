@@ -1,0 +1,40 @@
+.yourCartBanner {
+	margin: auto;
+	background-image: url("../../assets/yourcart.jpg"); /* The image used */
+	background-color: #cccccc; /* Used if the image is unavailable */
+	height: 215px;
+	width: 1330px; /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.cartWrapper {
+	display: flex;
+}
+
+.cartOuter {
+	width: 50vw;
+	height: 50vh;
+
+	margin-left: 45%;
+	margin-top: 5%;
+}
+.cartDeleteB {
+	margin-left: 2%;
+	cursor: pointer;
+}
+
+.total {
+	position: absolute;
+	margin-left: 70%;
+	top: 45%;
+	font-family: Roboto;
+}
+
+.pay {
+	position: absolute;
+	margin-left: 70%;
+	top: 50%;
+	font-family: Roboto;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../redux/ducks/userReducer';
 import './Auth.scss';
@@ -11,7 +11,7 @@ const Auth = () => {
 	return (
 		<div>
 			{user.user_pic ? (
-				<div >
+				<div>
 					<img style={{ width: '50px', height: '50px', borderRadius: '25px' }} src={user.user_pic} />
 
 					<a href={REACT_APP_LOGOUT}>Logout</a>

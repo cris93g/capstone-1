@@ -7,10 +7,10 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const USER_ITEMS = 'USER_ITEMS';
 const DELETE_ITEM = 'DELETE_ITEM';
-const CLEAR_CART= 'CLEAR_CART';
-const setAddItem = (payload) => ({ type: ADD_ITEM, payload });
+const CLEAR_CART = 'CLEAR_CART';
 
-export const addItem = (item_name, item_desc, item_price, item_category, item_pic, user_id,item_quantity) => {
+const setAddItem = (payload) => ({ type: ADD_ITEM, payload });
+export const addItem = (item_name, item_desc, item_price, item_category, item_pic, user_id, item_quantity) => {
 	return (dispatch) => {
 		axios
 			.post(`/api/new-item`, {
@@ -19,8 +19,8 @@ export const addItem = (item_name, item_desc, item_price, item_category, item_pi
 				item_price,
 				item_category,
 				item_pic,
-        user_id,
-        item_quantity
+				user_id,
+				item_quantity
 			})
 			.then((response) => dispatch(setAddItem(response.data)));
 	};
@@ -29,7 +29,7 @@ export const addItem = (item_name, item_desc, item_price, item_category, item_pi
 const setRemoveFromCart = (payload) => ({ type: REMOVE_FROM_CART, payload });
 export const removeFromCart = (id) => {
 	return (dispatch) => {
-		axios.post(`/api/recart`, {id}).then((response) => dispatch(setRemoveFromCart(response.data)));
+		axios.post(`/api/recart`, { id }).then((response) => dispatch(setRemoveFromCart(response.data)));
 	};
 };
 
@@ -47,12 +47,12 @@ export const getCart = () => {
 	};
 };
 
-const setClearCart = (payload)=>({type:CLEAR_CART,payload});
-export const clearCart = ()=>{
-	return(dispatch)=>{
-		axios.get(`/api/clearcart`).then((response)=>dispatch(setClearCart(response.data)))
-	}
-}
+const setClearCart = (payload) => ({ type: CLEAR_CART, payload });
+export const clearCart = () => {
+	return (dispatch) => {
+		axios.get(`/api/clearcart`).then((response) => dispatch(setClearCart(response.data)));
+	};
+};
 
 const setItems = (payload) => ({ type: SET_ITEMS, payload });
 export const fetchItem = () => {
@@ -63,7 +63,6 @@ export const fetchItem = () => {
 
 const setDeleteItem = (payload) => ({ type: DELETE_ITEM, payload });
 export const deleteItem = (item_id) => {
-	console.log(item_id);
 	return (dispatch) => {
 		axios.post(`/api/deleteItem`, { item_id }).then((response) => dispatch(setDeleteItem(response.data)));
 	};
@@ -80,15 +79,15 @@ const initialState = {
 	items: [],
 	cart: []
 };
-
+// we create our item reducer which checks if the initial state is diff than the action than gets changes
 export default function itemReducer(state = initialState, action) {
 	switch (action.type) {
-		case 'SET_ITEMS':
+		case `${SET_ITEMS}`:
 			return {
 				...state,
 				items: action.payload
 			};
-		case 'ADD_ITEM':
+		case `${ADD_ITEM}`:
 			return {
 				...state,
 				items: action.payload

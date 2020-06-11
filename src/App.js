@@ -3,13 +3,14 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { HashRouter as Router } from 'react-router-dom';
 import routes from './routes';
-import NewItem from './Screens/NewItem/NewItem';
 import Nav from './Components/Nav/Nav';
-import SidebarComp from './Components/SideBarComp/SideBarComp';
+import Brands from './Components/Brands/Brands';
 function App() {
 	return (
 		<Provider store={store}>
 			<Router>
+				<Nav />
+				<Brands />
 				<div className="App">{routes}</div>
 			</Router>
 		</Provider>

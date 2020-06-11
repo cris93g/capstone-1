@@ -1,14 +1,21 @@
+//our api functions most of them are async and most of them we declare our db than use on of the sql functions
 let addNewItem = async (req, res) => {
 	const db = await req.app.get('db');
-	const { item_name, item_desc, item_price, item_category, item_pic, user_id,item_quantity } = req.body;
-	  let generateSku = (str) => {
-      return str
-        .split('')
-        .map((letter) => letter.charCodeAt(0))
-        .reduce((a, b) => a + b);
+	const { item_name, item_desc, item_price, item_category, item_pic, user_id, item_quantity } = req.body;
+	let generateSku = (str) => {
+		return str.split('').map((letter) => letter.charCodeAt(0)).reduce((a, b) => a + b);
 	};
-	let newSku = await  generateSku(item_name);
-	let results = await db.add_item(item_name, item_desc, item_price, item_category, item_pic, user_id,item_quantity,newSku);
+	let newSku = await generateSku(item_name);
+	let results = await db.add_item(
+		item_name,
+		item_desc,
+		item_price,
+		item_category,
+		item_pic,
+		user_id,
+		item_quantity,
+		newSku
+	);
 	results ? res.status(200).send(results) : res.json({ sucess: false, message: 'failed to add item' });
 };
 
@@ -26,7 +33,6 @@ let getAllItems = async (req, res) => {
 
 let deleteSpecificItem = async (req, res) => {
 	const { item_id } = req.body;
-	console.log(item_id);
 	let db = await req.app.get('db');
 	let results = await db.delete_item([ item_id ]);
 	results ? res.status(200).send(results) : res.json({ sucess: false, message: 'failed to delete items' });
@@ -55,29 +61,27 @@ let getCart = (req, res) => {
 	res.status(200).send(req.session.cart);
 };
 let removeFromCart = async (req, res) => {
-	let {id}= req.body;
-	let {cart}=req.session
-	let i=0;
-	while(i<cart.length){
-		if(cart[i].item_id===id){
-			cart.splice(i,1)
+	let { id } = req.body;
+	let { cart } = req.session;
+	let i = 0;
+	while (i < cart.length) {
+		if (cart[i].item_id === id) {
+			cart.splice(i, 1);
 		}
-		i++
+		i++;
 	}
 	res.status(200).send(req.session.cart);
 };
-let clearCart= async(req,res)=>{
-	req.session.cart=[]
+let clearCart = async (req, res) => {
+	req.session.cart = [];
 	res.status(200).send(req.session.cart);
-}
-let updateQuantity = async (req,res)=>{
-	let {item_quantity,item_id} =req.body;
-	let db=await req.app.get('db')
-	let results = await db.updateQuantity([item_quantity,item_id]);
-	results
-    ? res.status(200).send(results)
-    : res.json({ sucess: false, message: 'failed to load item' });
-} 
+};
+let updateQuantity = async (req, res) => {
+	let { item_quantity, item_id } = req.body;
+	let db = await req.app.get('db');
+	let results = await db.updateQuantity([ item_quantity, item_id ]);
+	results ? res.status(200).send(results) : res.json({ sucess: false, message: 'failed to load item' });
+};
 module.exports = {
 	addNewItem,
 	getAllItems,

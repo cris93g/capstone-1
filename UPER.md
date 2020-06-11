@@ -37,11 +37,5 @@
 <h2>
     4. Reflection / Refactor
 </h2>
-*
-*
-*
-*
-*
-*
-*
-*
+*This project made me aware how diff things work like how  a reducer is basically a funnel where it just compares the initial value to the changes.For the refactoring part
+I need to do a lot of it i reused a bunch of components and code i could have made in a single file and just passed diff props to them.

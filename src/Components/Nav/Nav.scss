@@ -1,10 +1,9 @@
-
 .navWrapper {
 	margin-top: 2%;
 	width: 100vw;
 	height: 10vh;
 	display: flex;
-justify-content: space-around;
+	justify-content: space-around;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -12,7 +11,8 @@ justify-content: space-around;
 	margin-bottom: 1%;
 	align-content: stretch;
 	border-bottom: 1px solid rgb(136, 136, 136);
-	.leftItems{
+	margin-bottom: 1%;
+	.leftItems {
 		width: 20%;
 		height: 100%;
 		display: flex;
@@ -39,5 +39,4 @@ justify-content: space-around;
 	margin: auto;
 	justify-content: space-around;
 	font-family: Roboto, sans-serif;
-	
-	}
+}

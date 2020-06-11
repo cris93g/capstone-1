@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector, useCallback } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/ducks/itemReducer';
-import Nav from '../../Components/Nav/Nav';
-import { getUser } from '../../redux/ducks/userReducer';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
-import { Input, Form, Button, Dropdown } from 'semantic-ui-react';
+import { Input, Form, Button } from 'semantic-ui-react';
+import { config } from '../../firebase';
 import './NewItem.scss';
-const { FIREBASE_KEY } = process.env;
-console.log(FIREBASE_KEY);
-var config = {
-	apiKey: 'AIzaSyC3APZKh9pxpcXV6_pMoU_YZPJVb2R3kWU',
-	authDomain: 'eccomerce-7b26b.firebaseapp.com',
-	databaseURL: 'https://eccomerce-7b26b.firebaseio.com',
-	projectId: 'eccomerce-7b26b',
-	storageBucket: 'eccomerce-7b26b.appspot.com',
-	messagingSenderId: '953854821130'
-};
-firebase.initializeApp(config);
 
+firebase.initializeApp(config);
 const NewItem = () => {
 	const user = useSelector((state) => state.userReducer.user);
 	const dispatch = useDispatch();
@@ -30,10 +19,8 @@ const NewItem = () => {
 	const [ progress, setProgress ] = useState(0);
 	const [ avatarUrl, setAvatarUrl ] = useState('');
 	const handleChange = (e) => {
-		console.log(e.target.id, e.target.value);
 		setFormData({ ...formData, [e.target.id]: e.target.value });
 	};
-
 	let handleUploadStart = () => {
 		setIsuploading(true);
 		setProgress(0);
@@ -41,9 +28,7 @@ const NewItem = () => {
 	let handleProgress = (progress) => setProgress(progress);
 	let handleUploadError = (error) => {
 		setIsuploading(false);
-		console.log(error);
 	};
-
 	let handleUploadSuccess = (filename) => {
 		setAvatar(filename);
 		setProgress(100);
@@ -51,111 +36,102 @@ const NewItem = () => {
 		firebase.storage().ref('images').child(filename).getDownloadURL().then((url) => setAvatarUrl(url));
 	};
 
-	const { name, desc, price, category, pic,quantity } = formData;
+	const { name, desc, price, category, quantity } = formData;
 
 	useEffect(() => dispatch(addItem()), []);
 	return (
-    <div>
-      <Nav />
-      <div className='inpWrapper'>
-        {user.user_id ? (
-          <div>
-            <Form>
-              <Form.Field>
-                <h2> name:</h2>
-                <Input
-                  type='text'
-                  id='name'
-                  onChange={handleChange}
-                  value={formData.name}
-                  focus
-                  placeholder='Search...'
-                />
-              </Form.Field>
-              <Form.Field>
-                <h2> description:</h2>
-                <Input
-                  type='text'
-                  id='desc'
-                  onChange={handleChange}
-                  value={formData.desc}
-                  focus
-                  placeholder='Search...'
-                />
-              </Form.Field>
-              <Form.Field>
-                <h2> price:</h2>
-                <Input
-                  type='text'
-                  id='price'
-                  onChange={handleChange}
-                  value={formData.price}
-                  focus
-                  placeholder='Search...'
-                />
-              </Form.Field>
-              <Form.Field>
-                <h2> category:</h2>
-                <Input
-                  type='text'
-                  id='category'
-                  onChange={handleChange}
-                  value={formData.category}
-                  focus
-                  placeholder='Search...'
-                />
-              </Form.Field>
-              <Form.Field>
-                <h2> quantity:</h2>
-                <Input
-                  type='text'
-                  id='quantity'
-                  onChange={handleChange}
-                  value={formData.quantity}
-                  focus
-                  placeholder='Search...'
-                />
-              </Form.Field>
-              <FileUploader
-                accept='image/*'
-                name='avatar'
-                randomizeFilename
-                storageRef={firebase.storage().ref('images')}
-                onUploadStart={handleUploadStart}
-                onUploadError={handleUploadError}
-                onUploadSuccess={handleUploadSuccess}
-                onProgress={handleProgress}
-              />
-              <Form.Field>
-                <Link to='/main'>
-                  {' '}
-                  <Button
-                    onClick={(e) =>
-                      dispatch(
-                        addItem(
-                          name,
-                          desc,
-                          price,
-                          category,
-                          avatarUrl,
-						  user.user_id,
-						  quantity
-                        )
-                      )
-                    }
-                  >
-                    add
-                  </Button>
-                </Link>
-              </Form.Field>
-            </Form>
-          </div>
-        ) : (
-          <h2>please log in to add an item to sell</h2>
-        )}
-      </div>
-    </div>
-  );
+		<div>
+			<div className="newItemsBanner" />
+			<div className="inpWrapper">
+				{user.user_id ? (
+					<div>
+						<Form>
+							<Form.Field>
+								<h2> name:</h2>
+								<Input
+									type="text"
+									id="name"
+									onChange={handleChange}
+									value={formData.name}
+									focus
+									placeholder="Search..."
+								/>
+							</Form.Field>
+							<Form.Field>
+								<h2> description:</h2>
+								<Input
+									type="text"
+									id="desc"
+									onChange={handleChange}
+									value={formData.desc}
+									focus
+									placeholder="Search..."
+								/>
+							</Form.Field>
+							<Form.Field>
+								<h2> price:</h2>
+								<Input
+									type="text"
+									id="price"
+									onChange={handleChange}
+									value={formData.price}
+									focus
+									placeholder="Search..."
+								/>
+							</Form.Field>
+							<Form.Field>
+								<h2> category:</h2>
+								<Input
+									type="text"
+									id="category"
+									onChange={handleChange}
+									value={formData.category}
+									focus
+									placeholder="Search..."
+								/>
+							</Form.Field>
+							<Form.Field>
+								<h2> quantity:</h2>
+								<Input
+									type="text"
+									id="quantity"
+									onChange={handleChange}
+									value={formData.quantity}
+									focus
+									placeholder="Search..."
+								/>
+							</Form.Field>
+							<FileUploader
+								accept="image/*"
+								name="avatar"
+								randomizeFilename
+								storageRef={firebase.storage().ref('images')}
+								onUploadStart={handleUploadStart}
+								onUploadError={handleUploadError}
+								onUploadSuccess={handleUploadSuccess}
+								onProgress={handleProgress}
+							/>
+							<Form.Field>
+								<Link to="/main">
+									{' '}
+									<Button
+										onClick={(e) =>
+											dispatch(
+												addItem(name, desc, price, category, avatarUrl, user.user_id, quantity)
+											)}
+									>
+										add
+									</Button>
+								</Link>
+							</Form.Field>
+						</Form>
+					</div>
+				) : (
+					<h2 style={{ display: 'flex', margin: 'auto' }}>please log in to add an item to sell</h2>
+				)}
+			</div>
+		</div>
+	);
 };
 
 export default NewItem;
